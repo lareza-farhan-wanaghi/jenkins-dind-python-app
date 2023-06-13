@@ -18,7 +18,7 @@ node {
             withEnv([
                 'HOME=.',
             ]) {
-                sh 'python3 -m pyinstaller --onefile sources/add2vals.py'
+                sh 'python -m pyinstaller --onefile sources/add2vals.py'
                 archiveArtifacts 'dist/add2vals'
                 sleep 60
             }
