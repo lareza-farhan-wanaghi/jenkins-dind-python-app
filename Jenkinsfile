@@ -14,11 +14,11 @@ node {
     }
 
     stage('Deploy') {
-        docker.image('cdrx/pyinstaller-linux:python2').inside("--entrypoint=''"){
+        docker.image('cdrx/pyinstaller-linux:python3').inside("--entrypoint=''"){
             withEnv([
                 'HOME=.',
             ]) {
-                sh 'python -m PyInstaller --onefile sources/add2vals.py'
+                sh 'pyinstaller --onefile sources/add2vals.py'
                 archiveArtifacts 'dist/add2vals'
                 sleep 60
             }
