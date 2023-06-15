@@ -6,6 +6,6 @@ WORKDIR /src
 
 RUN pyinstaller -F add2vals.py
 
-RUN echo "test"
+CMD ["echo", "test"]
 
 CMD ["./dist/add2vals", "2", "1"]
