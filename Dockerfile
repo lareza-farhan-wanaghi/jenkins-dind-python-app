@@ -6,4 +6,4 @@ WORKDIR /src
 
 RUN pyinstaller -F add2vals.py
 
-ENTRYPOINT ["./dist/add2vals"]
+ENTRYPOINT ["./dist/add2vals 2 1"]

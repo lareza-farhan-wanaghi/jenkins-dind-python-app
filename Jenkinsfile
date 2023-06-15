@@ -4,7 +4,6 @@ node {
         docker.image('python:2-alpine').inside {
             sh 'echo test2'
             sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-            stash(name: 'compiled-results', includes: 'sources/*.py*')
         }
     }
     
@@ -20,7 +19,6 @@ node {
     }
 
     stage('Deploy') {
-        unstash('compiled-results')
         withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
             sh 'docker build -t 890890123890/simple-python-app .'
             sh "echo $PASS | docker login -u $USER --password-stdin"
