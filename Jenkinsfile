@@ -20,15 +20,23 @@ node {
     }
 
     stage('Deploy') {
-        withEnv(['VOLUME=$(pwd)/sources:/src', 'IMAGE=cdrx/pyinstaller-linux:python2']) {
-            dir(env.BUILD_ID) {
-                unstash('compiled-results')
-                sh "docker run --rm -v ${env.VOLUME} ${env.IMAGE} 'pyinstaller -F add2vals.py'"
-                // sleep 60
-                sh "echo test2"
-                sh 'sources/dist/add2vals 1 2'  // Test the deployed executable
-      
-            }
+        unstash('compiled-results')
+        withCredentials([usernamePassword(credentialsId: '9b4ff735-cbfe-41b3-9052-064bd5d439cd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+            sh 'docker build -t 890890123890/simple-python-app .'
+            sh "echo $PASS | docker login -u $USER --password-stdin"
+            sh 'docker push 890890123890/simple-python-app'
+        }
+        
+        sshagent(['e0195529-4da9-4a6b-ad0a-05a28a309c8a']) {
+            def cmd = 'docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:latest'
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
+        }
+
+        // sleep 60
+
+        sshagent(['e0195529-4da9-4a6b-ad0a-05a28a309c8a']) {
+            def cmd = 'docker rm app'
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
     }
 }
