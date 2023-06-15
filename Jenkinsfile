@@ -25,7 +25,7 @@ node {
                 unstash('compiled-results')
                 sh "docker run --rm -v ${env.VOLUME} ${env.IMAGE} 'pyinstaller -F add2vals.py'"
                 sleep 60
-                sh "echo test"
+                sh "echo test2"
             }
         }
     }
