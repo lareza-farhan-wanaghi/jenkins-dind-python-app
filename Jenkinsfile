@@ -26,7 +26,6 @@ node {
                 sh "docker run --rm -v ${env.VOLUME} ${env.IMAGE} 'pyinstaller -F add2vals.py'"
                 // sleep 60
                 sh "echo test2"
-                sh 'sudo chmod +x sources/dist/add2vals'
                 sh 'sources/dist/add2vals'  // Test the deployed executable
       
             }
