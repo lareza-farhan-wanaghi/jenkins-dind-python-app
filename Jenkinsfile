@@ -21,21 +21,21 @@ node {
 
     stage('Deploy') {
         unstash('compiled-results')
-        withCredentials([usernamePassword(credentialsId: '9b4ff735-cbfe-41b3-9052-064bd5d439cd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
             sh 'docker build -t 890890123890/simple-python-app .'
             sh "echo $PASS | docker login -u $USER --password-stdin"
             sh 'docker push 890890123890/simple-python-app'
         }
         
-        sshagent(['e0195529-4da9-4a6b-ad0a-05a28a309c8a']) {
+        sshagent(['ec2-app']) {
             def cmd = 'docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:latest'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
 
         // sleep 60
 
-        sshagent(['e0195529-4da9-4a6b-ad0a-05a28a309c8a']) {
-            def cmd = 'docker rm app'
+        sshagent(['ec2-app']) {
+            def cmd = 'docker stop app && docker rm app'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
     }
