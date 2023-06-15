@@ -28,14 +28,14 @@ node {
         }
         
         sshagent(['ec2-app']) {
-            def cmd = 'docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:latest'
+            def cmd = 'sudo docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:latest'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
 
         // sleep 60
 
         sshagent(['ec2-app']) {
-            def cmd = 'docker stop app && docker rm app'
+            def cmd = 'sudo docker stop app && docker rm app'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
     }
