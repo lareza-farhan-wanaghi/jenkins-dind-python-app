@@ -35,7 +35,7 @@ node {
         // sleep 60
 
         sshagent(['ec2-app']) {
-            def cmd = 'sudo docker stop app && docker rm app'
+            def cmd = 'sudo docker stop app && sudo docker rm app'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
     }
