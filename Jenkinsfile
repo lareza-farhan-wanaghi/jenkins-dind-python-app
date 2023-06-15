@@ -16,7 +16,7 @@ node {
 
 
     stage('Manual Approval') {
-        input message: 'Lanjutkan ke tahap Deploy?'
+        // input message: 'Lanjutkan ke tahap Deploy?'
     }
 
     stage('Deploy') {
@@ -26,7 +26,7 @@ node {
                 sh "docker run --rm -v ${env.VOLUME} ${env.IMAGE} 'pyinstaller -F add2vals.py'"
                 // sleep 60
                 sh "echo test2"
-                sh 'sources/dist/add2vals'  // Test the deployed executable
+                sh 'sources/dist/add2vals 1 2'  // Test the deployed executable
       
             }
         }
