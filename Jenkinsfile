@@ -19,13 +19,13 @@ node {
 
     stage('Deploy') {
         withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-            sh 'docker build -t 890890123890/simple-python-app:v1 .'
+            sh 'docker build -t 890890123890/simple-python-app .'
             sh "echo $PASS | docker login -u $USER --password-stdin"
-            sh 'docker push 890890123890/simple-python-app:v1'
+            sh 'docker push 890890123890/simple-python-app'
         }
         
         sshagent(['ec2-app']) {
-            def cmd = 'sudo docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:v1'
+            def cmd = 'sudo docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:latest'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
 

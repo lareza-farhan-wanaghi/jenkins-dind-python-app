@@ -8,4 +8,4 @@ RUN pyinstaller -F add2vals.py
 
 CMD ["echo", "test"]
 
-CMD ["./dist/add2vals", "2", "1"]
+# CMD ["./dist/add2vals", "2", "1"]
