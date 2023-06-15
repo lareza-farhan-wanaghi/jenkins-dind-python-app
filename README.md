@@ -8,7 +8,11 @@ The scope of work for this project is focused on the **'Jenkinsfile'** and **'Do
 
 ### Jenkinsfile
 
-The **'Jenkinsfile'** sets up a CI/CD pipeline consisting of four stages. Prior to executing each stage, it retrieves the relevant repository data. Each stage performs specific actions outlined below:
+The **'Jenkinsfile'** sets up a CI/CD pipeline consisting of four stages. 
+
+![Alt Text](./jenkins.png)
+
+Prior to executing each stage, it retrieves the relevant repository data. Each stage performs specific actions outlined below:
 
 - **Build:**
 This stage compiles the Python code located in the **'source'** folder using the `py_compile` module.
