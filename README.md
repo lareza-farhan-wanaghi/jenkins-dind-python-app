@@ -8,7 +8,7 @@ The scope of work for this project is focused on the **'Jenkinsfile'** and **'Do
 
 ### Jenkinsfile
 
-The **'Jenkinsfile'** sets up a CI/CD pipeline consisting of four stages. 
+The **'Jenkinsfile'** sets up a CI/CD pipeline consisting of four stages as shown below. 
 
 ![Alt Text](./jenkins.png)
 
