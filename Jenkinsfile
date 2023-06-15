@@ -27,7 +27,7 @@ node {
         
         sshagent(['ec2-app']) {
             def cmd = 'sudo docker pull 890890123890/simple-python-app:latest && sudo docker run --name app -p 3000:3000 -d 890890123890/simple-python-app:latest'
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 '${cmd}'"
         }
 
         sleep 60
