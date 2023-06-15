@@ -16,7 +16,7 @@ node {
 
 
     stage('Manual Approval') {
-        // input message: 'Lanjutkan ke tahap Deploy?'
+        input message: 'Lanjutkan ke tahap Deploy?'
     }
 
     stage('Deploy') {
@@ -32,7 +32,7 @@ node {
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.136.105.164 ${cmd}"
         }
 
-        // sleep 60
+        sleep 60
 
         sshagent(['ec2-app']) {
             def cmd = 'sudo docker stop app && sudo docker rm app'
