@@ -19,7 +19,6 @@ node {
 
     stage('Deploy') {
         withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-            sh 'cat Dockerfile'
             sh 'docker build -t 890890123890/simple-python-app .'
             sh "echo $PASS | docker login -u $USER --password-stdin"
             sh 'docker push 890890123890/simple-python-app'
