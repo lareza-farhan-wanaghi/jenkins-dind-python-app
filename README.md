@@ -30,4 +30,4 @@ The Deploy stage begins by building and pushing a Docker image using the **'Dock
 
 ### Dockerfile
 
-The **'Dockerfile'** is responsible for running the Python app, which has its source code located in the **'source'** folder. It leverages `PyInstaller` to generate an executable file for the Python app and subsequently executes the generated executable file to simulate the app's functionality.
+The **'Dockerfile'** is responsible for making a docker image that runs the Python app, which has its source code located in the **'source'** folder. It leverages `PyInstaller` to generate an executable file for the Python app and subsequently executes the generated executable file to simulate the app's functionality.
