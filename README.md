@@ -1,4 +1,4 @@
-# simple-python-pyinstaller-app
+# jenkins-dind-python-app
 
 ![Completion status: completed](https://img.shields.io/badge/COMPLETION%20STATUS-COMPLETED-success?style=for-the-badge)
 
