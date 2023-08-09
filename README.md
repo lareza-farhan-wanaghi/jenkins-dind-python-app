@@ -28,7 +28,6 @@ This stage halts the pipeline and waits for manual approval before proceeding fu
 - **Deploy:**
 The Deploy stage begins by building and pushing a Docker image using the **'Dockerfile'** in the root directory. It then establishes an SSH connection to an EC2 instance and runs a Docker container using the previously built image. After the container completes its execution and stops, a 60-second delay is introduced before proceeding. Once the delay is complete, the pipeline reconnects to the EC2 instance and removes the previously created container. 
 
-*(Note: While we aligned the stages with the assignment requirements, alternative strategies might be needed to create a more robust pipeline for the app, such as making a stage to test the Docker Image.)*
 ### Dockerfile
 
 The **'Dockerfile'** is responsible for making a docker image that runs the Python app in the **'source'** folder. It leverages the `PyInstaller` tool to generate an executable file for the Python app and subsequently executes the generated executable file to simulate the app's functionality.
