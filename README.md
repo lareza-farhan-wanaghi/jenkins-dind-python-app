@@ -1,4 +1,4 @@
-# jenkins-dind-python-app
+# Jenkins Dind Python App
 
 ![Completion status: completed](https://img.shields.io/badge/COMPLETION%20STATUS-COMPLETED-success?style=for-the-badge)
 
