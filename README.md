@@ -1,7 +1,5 @@
 # Jenkins Dind Python App
 
-![Completion status: completed](https://img.shields.io/badge/COMPLETION%20STATUS-COMPLETED-success?style=for-the-badge)
-
 This repository is dedicated to completing the "Proyek Membangun CI/CD Pipeline dengan Jenkins" assessment from the [Belajar Implementasi CI/CD](https://www.dicoding.com/academies/428) course provided by Dicoding Indonesia.
 
 ## Scope of Work
